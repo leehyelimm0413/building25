@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>건설기술의 발달 역사 — 세계의 건축물로 보는 시대별 건설기술</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --card: #ffffff;
+    --border: #e0e4ed;
+    --accent: #b8860b;
+    --accent2: #1a6fa8;
+    --accent3: #3a8a3a;
+    --text: #1a1d2e;
+    --muted: #5a5f7a;
+    --ancient: #b85a1a;
+    --medieval: #6b3ab8;
+    --modern-early: #1a6fa8;
+    --modern-mid: #1a8a4a;
+    --modern-late: #a81a5a;
+    --contemporary: #8a6a00;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #eef2fa 0%, #f7f8fa 50%, #f0f4fb 100%);
+    padding: 60px 40px 50px;
+    text-align: center;
+    border-bottom: 2px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,134,11,0.06) 0%, transparent 70%);
+  }
+  .hero-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    opacity: 0.9;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(24px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #1a1d2e;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 620px;
+    margin: 0 auto 28px;
+  }
+
+  /* Era legend */
+  .era-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  .era-tag {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 1.5px solid;
+  }
+  .era-tag.ancient   { color: var(--ancient);      border-color: var(--ancient);      background: rgba(200,130,74,0.1); }
+  .era-tag.medieval  { color: var(--medieval);     border-color: var(--medieval);     background: rgba(155,124,200,0.1); }
+  .era-tag.early-mod { color: var(--modern-early); border-color: var(--modern-early); background: rgba(74,155,200,0.1); }
+  .era-tag.mid-mod   { color: var(--modern-mid);   border-color: var(--modern-mid);   background: rgba(74,200,128,0.1); }
+  .era-tag.late-mod  { color: var(--modern-late);  border-color: var(--modern-late);  background: rgba(200,74,122,0.1); }
+  .era-tag.contemp   { color: var(--contemporary); border-color: var(--contemporary); background: rgba(232,201,122,0.1); }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* ── SECTION HEADER ── */
+  .era-section { margin-bottom: 56px; }
+  .era-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .era-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .era-header-text h2 { font-size: 20px; font-weight: 700; color: #1a1d2e; }
+  .era-header-text p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .era-tech-pill {
+    margin-left: auto;
+    padding: 5px 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border: 1.5px solid;
+    white-space: nowrap;
+  }
+
+  /* color per era */
+  .era-ancient   .era-dot { background: var(--ancient); }
+  .era-ancient   .era-header-text h2 { color: var(--ancient); }
+  .era-ancient   .era-tech-pill { color: var(--ancient); border-color: var(--ancient); background: rgba(200,130,74,0.08); }
+
+  .era-medieval  .era-dot { background: var(--medieval); }
+  .era-medieval  .era-header-text h2 { color: var(--medieval); }
+  .era-medieval  .era-tech-pill { color: var(--medieval); border-color: var(--medieval); background: rgba(155,124,200,0.08); }
+
+  .era-early-mod .era-dot { background: var(--modern-early); }
+  .era-early-mod .era-header-text h2 { color: var(--modern-early); }
+  .era-early-mod .era-tech-pill { color: var(--modern-early); border-color: var(--modern-early); background: rgba(74,155,200,0.08); }
+
+  .era-mid-mod   .era-dot { background: var(--modern-mid); }
+  .era-mid-mod   .era-header-text h2 { color: var(--modern-mid); }
+  .era-mid-mod   .era-tech-pill { color: var(--modern-mid); border-color: var(--modern-mid); background: rgba(74,200,128,0.08); }
+
+  .era-late-mod  .era-dot { background: var(--modern-late); }
+  .era-late-mod  .era-header-text h2 { color: var(--modern-late); }
+  .era-late-mod  .era-tech-pill { color: var(--modern-late); border-color: var(--modern-late); background: rgba(200,74,122,0.08); }
+
+  .era-contemp   .era-dot { background: var(--contemporary); }
+  .era-contemp   .era-header-text h2 { color: var(--contemporary); }
+  .era-contemp   .era-tech-pill { color: var(--contemporary); border-color: var(--contemporary); background: rgba(232,201,122,0.08); }
+
+  /* ── BUILDING CARDS ── */
+  .buildings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .building-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 26px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  }
+  .building-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(184,134,11,0.45);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .card-icon {
+    font-size: 32px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .card-title-block h3 { font-size: 18px; font-weight: 700; color: #1a1d2e; line-height: 1.3; }
+  .card-title-block .card-sub {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .card-year {
+    margin-left: auto;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--accent);
+    white-space: nowrap;
+    padding-top: 3px;
+    font-weight: 600;
+  }
+  .card-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 14px;
+  }
+  .info-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .info-label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    padding-top: 3px;
+    min-width: 60px;
+  }
+  .info-value {
+    color: var(--text);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  .tech-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 14px;
+  }
+  .tech-chip {
+    padding: 5px 13px;
+    background: rgba(26,111,168,0.08);
+    border: 1px solid rgba(26,111,168,0.3);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--accent2);
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    font-family: inherit;
+  }
+  .tech-chip:hover { background: rgba(26,111,168,0.16); transform: translateY(-1px); }
+  .tech-chip.has-explain::after { content: ' 💡'; font-size: 11px; }
+  .card-highlight {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(184,134,11,0.07);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .card-highlight strong { color: var(--accent); }
+
+  /* ── TECH EVOLUTION BANNER ── */
+  .tech-banner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tech-banner h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    color: #1a1d2e;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .tech-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .tech-node {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    position: relative;
+  }
+  .tech-node-inner {
+    padding: 10px 8px;
+  }
+  .tech-node-era {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+    color: #1a1d2e;
+  .tech-node-desc {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .tech-node::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 16px;
+    z-index: 1;
+  }
+  .tech-node:last-child::after { display: none; }
+  .tech-node-bar {
+    height: 4px;
+    border-radius: 2px;
+    margin: 0 8px;
+  }
+
+  /* ── DISCUSSION BOX ── */
+  .discussion-box {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 30px 36px;
+    margin-top: 48px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .discussion-box h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    color: #1a1d2e;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .q-list { list-style: none; }
+  .q-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .q-list li:last-child { border-bottom: none; }
+  .q-num {
+    width: 28px; height: 28px;
+    background: rgba(26,111,168,0.1);
+    border: 1.5px solid var(--accent2);
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .q-text { color: var(--text); line-height: 1.65; }
+
+  /* ── FOOTER ── */
+  .lesson-footer {
+    margin-top: 40px;
+    padding: 20px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--muted);
+    background: #f0f4fb;
+  }
+
+  /* ── EXPLAIN MODAL ── */
+  .explain-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .explain-overlay.show { opacity: 1; pointer-events: all; }
+  .explain-box {
+    background: #ffffff;
+    color: #1a1d2e;
+    border-radius: 16px;
+    max-width: 560px; width: 100%;
+    max-height: 82vh; overflow-y: auto;
+    padding: 1.8rem 2rem;
+    position: relative;
+    transform: scale(0.94) translateY(10px);
+    transition: transform 0.22s;
+    border: 1.5px solid #e0e4ed;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+  }
+  .explain-overlay.show .explain-box { transform: scale(1) translateY(0); }
+  .explain-close {
+    position: absolute; top: 14px; right: 16px;
+    background: #f0f2f5; border: none; cursor: pointer;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; color: #555; transition: background 0.12s;
+  }
+  .explain-close:hover { background: #e0e4ed; }
+  .explain-cat {
+    display: inline-block;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 3px 11px;
+    border-radius: 20px; margin-bottom: 10px;
+  }
+  .explain-title {
+    font-size: 21px; font-weight: 700; color: #1a1d2e;
+    margin-bottom: 16px; line-height: 1.35; letter-spacing: -0.3px;
+  }
+  .explain-body { font-size: 14.5px; color: #444; line-height: 1.85; }
+  .explain-body p { margin-bottom: 11px; }
+  .explain-body p:last-child { margin-bottom: 0; }
+  .explain-body strong { color: #1a1d2e; font-weight: 700; }
+  .explain-example {
+    margin-top: 16px; padding: 11px 15px;
+    background: #f7f8fa; border-radius: 9px;
+    font-size: 13.5px; color: #5a5f7a;
+    border-left: 3px solid #b8860b;
+  }
+  .explain-example-lbl {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-bottom: 5px; color: #b8860b;
+  }
+
+  /* style-link inline button */
+  .style-explain-btn {
+    display: inline-flex; align-items: center; gap: 4px;
+    cursor: pointer; border-radius: 6px;
+    padding: 2px 7px 2px 6px;
+    background: rgba(26,111,168,0.07);
+    border: 1px solid rgba(26,111,168,0.2);
+    color: inherit; font-size: inherit; font-family: inherit;
+    transition: background 0.12s;
+  }
+  .style-explain-btn:hover { background: rgba(26,111,168,0.16); }
+  .style-explain-btn .tip { font-size: 11px; opacity: 0.6; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px 36px; }
+    .page { padding: 28px 16px 60px; }
+    .buildings-grid { grid-template-columns: 1fr; }
+    .tech-flow { flex-direction: column; gap: 0; }
+    .tech-node::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -12px; transform: translateX(-50%); }
+    .tech-banner { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">기술·가정 | 2학년 기술 영역</div>
+  <h1>세계의 건축물로 보는<br><span>건설기술의 발달 역사</span></h1>
+  <p class="hero-sub">우리 반 학생들이 직접 선정한 20곳의 건축물을 시대순으로 살펴보며,<br>각 시대의 건설기술이 어떻게 발전해 왔는지 알아봅시다.</p>
+  <div class="era-legend">
+    <span class="era-tag ancient">고대 (BC 2600~AD 100)</span>
+    <span class="era-tag medieval">중세 (1100~1400)</span>
+    <span class="era-tag early-mod">근대 초기 (1840~1890)</span>
+    <span class="era-tag mid-mod">근대 후기 (1940~1970)</span>
+    <span class="era-tag late-mod">현대 초기 (1976~2003)</span>
+    <span class="era-tag contemp">현대 (2004~현재)</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- TECH FLOW -->
+  <div class="tech-banner">
+    <h2>⚙️ 건설기술의 핵심 발전 흐름</h2>
+    <div class="tech-flow">
+      <div class="tech-node">
+        <div class="tech-node-bar" style="background:var(--ancient);"></div>
+        <div class="tech-node-inner">
+          <div class="tech-node-era" style="color:var(--ancient);">고대</div>
+          <div class="tech-node-keyword">석재 · 조적</div>
+          <div class="tech-node-desc">석회암 블록, 로마 콘크리트, 아치 구조</div>
+        </div>
+      </div>
+      <div class="tech-node">
+        <div class="tech-node-bar" style="background:var(--medieval);"></div>
+        <div class="tech-node-inner">
+          <div class="tech-node-era" style="color:var(--medieval);">중세</div>
+          <div class="tech-node-keyword">정밀 조적</div>
+          <div class="tech-node-desc">대리석 마감, 첨탑 구조, 고딕 아치</div>
+        </div>
+      </div>
+      <div class="tech-node">
+        <div class="tech-node-bar" style="background:var(--modern-early);"></div>
+        <div class="tech-node-inner">
+          <div class="tech-node-era" style="color:var(--modern-early);">근대 초기</div>
+          <div class="tech-node-keyword">철 · 철강</div>
+          <div class="tech-node-desc">주철·연철 프레임, 리벳 접합, 철골 구조</div>
+        </div>
+      </div>
+      <div class="tech-node">
+        <div class="tech-node-bar" style="background:var(--modern-mid);"></div>
+        <div class="tech-node-inner">
+          <div class="tech-node-era" style="color:var(--modern-mid);">근대 후기</div>
+          <div class="tech-node-keyword">RC 구조</div>
+          <div class="tech-node-desc">철근콘크리트, 용접 접합, 고층화 시작</div>
+        </div>
+      </div>
+      <div class="tech-node">
+        <div class="tech-node-bar" style="background:var(--modern-late);"></div>
+        <div class="tech-node-inner">
+          <div class="tech-node-era" style="color:var(--modern-late);">현대 초기</div>
+          <div class="tech-node-keyword">PC · 커튼월</div>
+          <div class="tech-node-desc">프리캐스트 콘크리트, 대형 유리 외피, 특수 구조</div>
+        </div>
+      </div>
+      <div class="tech-node">
+        <div class="tech-node-bar" style="background:var(--contemporary);"></div>
+        <div class="tech-node-inner">
+          <div class="tech-node-era" style="color:var(--contemporary);">현대</div>
+          <div class="tech-node-keyword">초고층 · 스마트</div>
+          <div class="tech-node-desc">고강도 콘크리트, BIM, 내진·면진, 친환경</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════
+       ERA 1 : 고대
+  ═════════════════════════════ -->
+  <div class="era-section era-ancient">
+    <div class="era-header">
+      <div class="era-dot"></div>
+      <div class="era-header-text">
+        <h2>① 고대 (Ancient) — BC 2600년 ~ AD 80년</h2>
+        <p>석재와 조적 기술의 시대 | 중력과 아치로 거대한 공간을 구현</p>
+      </div>
+      <div class="era-tech-pill">핵심기술: 석재 조적 · 아치 · 로마 콘크리트</div>
+    </div>
+    <div class="buildings-grid">
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🏜️</div>
+          <div class="card-title-block">
+            <h3>이집트 피라미드 (기자)</h3>
+            <div class="card-sub">Pyramids of Giza · 이집트</div>
+          </div>
+          <div class="card-year">BC 2560년경</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">고대 이집트식 — 마스타바→계단식→진정한 피라미드로 발전</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">약 230만 개 석회암 블록(2.5~15톤)을 경사로와 지렛대·썰매로 운반·적층</span></div>
+        <div class="info-row"><span class="info-label">높이</span><span class="info-value">138m (원래 146m) · 구리 도구만으로 시공</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">석재 조적</span>
+          <span class="tech-chip">경사로 공법</span>
+          <span class="tech-chip">정밀 측량</span>
+          <span class="tech-chip">집단 노동 조직</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 금속 기계 없이 순수한 인력·석재·경사로만으로 현재도 경이로운 정밀도를 달성. 수십만 명의 노동 조직력이 곧 '건설기술'이었다.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🏟️</div>
+          <div class="card-title-block">
+            <h3>콜로세움</h3>
+            <div class="card-sub">Colosseum · 이탈리아 로마</div>
+          </div>
+          <div class="card-year">AD 72–80년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">로마 건축 — 반원형 아치, 볼트(Vault), 3단 주범(도리아·이오니아·코린트)</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">로마 콘크리트(포촐라나 화산재+석회)·아치 연속 구조로 5~8만 명 수용 공간 실현. 지하에 80개 수직통로와 기계장치 설치</span></div>
+        <div class="info-row"><span class="info-label">규모</span><span class="info-value">장축 188m × 단축 156m × 높이 48m</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">로마 콘크리트</span>
+          <span class="tech-chip">아치·볼트 구조</span>
+          <span class="tech-chip">지하 기계 시스템</span>
+          <span class="tech-chip">차양막(Velarium)</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 로마 콘크리트(opus caementicium)는 고대 최고의 건설 신소재. 2000년이 지난 지금도 균열 없이 자가 치유되는 특성이 현대에 재발견되었다.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════
+       ERA 2 : 중세
+  ═════════════════════════════ -->
+  <div class="era-section era-medieval">
+    <div class="era-header">
+      <div class="era-dot"></div>
+      <div class="era-header-text">
+        <h2>② 중세 (Medieval) — 1100년대 ~ 1370년대</h2>
+        <p>정밀 조적과 첨탑 건축의 시대 | 높이를 향한 도전</p>
+      </div>
+      <div class="era-tech-pill">핵심기술: 대리석 조적 · 기초 공학</div>
+    </div>
+    <div class="buildings-grid">
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🗼</div>
+          <div class="card-title-block">
+            <h3>피사의 사탑</h3>
+            <div class="card-sub">Torre di Pisa · 이탈리아 피사</div>
+          </div>
+          <div class="card-year">1173–1372년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">로마네스크 양식 — 원형 평면에 백색 대리석 아케이드 8층</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">대리석 외장·대리석 기둥 조적. 연약 지반 위 얕은 기초(약 3m)로 착공 직후부터 기울어짐 시작. 196년에 걸쳐 완공</span></div>
+        <div class="info-row"><span class="info-label">기울기</span><span class="info-value">현재 약 3.97도 (현대 기술로 보정 완료)</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">대리석 조적</span>
+          <span class="tech-chip">원형 종탑 설계</span>
+          <span class="tech-chip">지반 불균형 사례</span>
+          <span class="tech-chip">현대 기초 보강</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 지반 조사 기술의 부재가 낳은 역설적 명소. 현대에는 컴퓨터 해석과 언더피닝 공법으로 기울기를 안전 범위로 교정 — 지반공학의 발전을 보여주는 교과서 사례.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════
+       ERA 3 : 근대 초기
+  ═════════════════════════════ -->
+  <div class="era-section era-early-mod">
+    <div class="era-header">
+      <div class="era-dot"></div>
+      <div class="era-header-text">
+        <h2>③ 근대 초기 (Early Modern) — 1840년대 ~ 1890년대</h2>
+        <p>철강 혁명과 산업화의 시대 | 새로운 재료가 건축의 한계를 바꾸다</p>
+      </div>
+      <div class="era-tech-pill">핵심기술: 철골 구조 · 리벳 접합 · 전기 엘리베이터</div>
+    </div>
+    <div class="buildings-grid">
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🕰️</div>
+          <div class="card-title-block">
+            <h3>빅 벤 (엘리자베스 타워)</h3>
+            <div class="card-sub">Elizabeth Tower · 영국 런던</div>
+          </div>
+          <div class="card-year">1844–1859년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">빅토리아 고딕 리바이벌 — 중세 고딕 양식을 19세기에 재해석</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">벽돌 구조 + 주철 철탑 내부 프레임. 석재(요크셔 사암) 외장. 시계 메커니즘을 지지하는 철제 골격</span></div>
+        <div class="info-row"><span class="info-label">높이</span><span class="info-value">96m · 시계 직경 7m · 분침 4.27m</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">주철 프레임</span>
+          <span class="tech-chip">고딕 리바이벌</span>
+          <span class="tech-chip">정밀 시계 제작</span>
+          <span class="tech-chip">석재 외장</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 전통 석조미와 산업혁명의 금속 프레임이 결합된 과도기 건축. 철이 장식이 아닌 구조 재료로 쓰이기 시작한 전환점.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">⚽</div>
+          <div class="card-title-block">
+            <h3>안필드 스타디움</h3>
+            <div class="card-sub">Anfield Stadium · 영국 리버풀</div>
+          </div>
+          <div class="card-year">1884년 개장</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">빅토리아 시대 스포츠 건축 — 관중석을 지지하는 철골 캔틸레버 구조</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">주철 기둥 + 철골 지붕 트러스. 벽돌 외벽. 이후 수차례 철근콘크리트 증축 (현재 수용 인원 61,276명)</span></div>
+        <div class="info-row"><span class="info-label">특징</span><span class="info-value">19세기 스타디움에서 현대적 대형 경기장으로 변화하는 과정이 한 건물에 담겨있음</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">철골 트러스</span>
+          <span class="tech-chip">캔틸레버 관중석</span>
+          <span class="tech-chip">단계적 증축</span>
+          <span class="tech-chip">스포츠 건축</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 수차례 증·개축 역사가 고스란히 남아있는 건물. 각 시대의 재료와 공법이 켜켜이 쌓인 '건설기술 연표'.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🗽</div>
+          <div class="card-title-block">
+            <h3>자유의 여신상</h3>
+            <div class="card-sub">Statue of Liberty · 미국 뉴욕</div>
+          </div>
+          <div class="card-year">1875–1886년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">신고전주의 조각+공학 — 에펠(탑의 설계자)이 내부 구조 담당</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">두께 2.4mm 구리판을 망치로 성형(repoussé)하여 외피 제작. 내부는 연철 격자 프레임이 구리 외피를 유연하게 지지 (에펠의 혁신적 설계)</span></div>
+        <div class="info-row"><span class="info-label">높이</span><span class="info-value">받침대 포함 93m · 구리 외피 무게 31톤</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">연철 내부 골격</span>
+          <span class="tech-chip">구리판 성형</span>
+          <span class="tech-chip">유연 외피 시스템</span>
+          <span class="tech-chip">프랑스-미국 협업</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 에펠이 설계한 내부 철골 구조는 외피와 구조를 분리한 혁신. 에펠탑보다 3년 앞선 철골 설계 실험이었다.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🗼</div>
+          <div class="card-title-block">
+            <h3>에펠탑</h3>
+            <div class="card-sub">Tour Eiffel · 프랑스 파리</div>
+          </div>
+          <div class="card-year">1887–1889년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">구조 표현주의 — '철'의 아름다움을 구조 자체로 보여주는 혁명적 미학</span></div>
+        <div class="info-row"><span class="info-value">연철(Puddled Iron) 18,038개 부재를 300만 개 리벳으로 조립. 부재별 공장 사전 제작 후 현장 조립. 풍압을 고려한 포물선 곡선 형태</span></div>
+        <div class="info-row"><span class="info-label">규모</span><span class="info-value">높이 330m · 무게 7,300톤 · 시공 기간 2년 2개월 10일</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">연철 조립식</span>
+          <span class="tech-chip">리벳 접합 300만 개</span>
+          <span class="tech-chip">공장 프리패브</span>
+          <span class="tech-chip">풍동 설계</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> '공장에서 만들고 현장에서 조립'하는 프리패브리케이션(Prefabrication)의 선구자. 건설된 지 41년간 세계 최고층 구조물이었다.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════
+       ERA 4 : 근대 후기
+  ═════════════════════════════ -->
+  <div class="era-section era-mid-mod">
+    <div class="era-header">
+      <div class="era-dot"></div>
+      <div class="era-header-text">
+        <h2>④ 근대 후기 (Mid-Modern) — 1940년대 ~ 1960년대</h2>
+        <p>철근콘크리트와 철탑 건축의 시대 | 도시 인프라와 스포츠 시설의 확장</p>
+      </div>
+      <div class="era-tech-pill">핵심기술: 철근콘크리트 (RC) · 철골 용접</div>
+    </div>
+    <div class="buildings-grid">
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🏟️</div>
+          <div class="card-title-block">
+            <h3>산티아고 베르나베우</h3>
+            <div class="card-sub">Estadio Santiago Bernabéu · 스페인 마드리드</div>
+          </div>
+          <div class="card-year">1944–1947년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">모더니즘 스포츠 건축 — 기능 중심의 대형 관중석 설계</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">철근콘크리트 구조체. 여러 차례 증축(1955·1982·1998). 2019~2023년 대규모 리모델링 — 개폐식 지붕·잔디 슬라이딩 시스템 추가</span></div>
+        <div class="info-row"><span class="info-label">수용인원</span><span class="info-value">81,044명 (현재 기준)</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">RC 구조</span>
+          <span class="tech-chip">대형 관중석 설계</span>
+          <span class="tech-chip">개폐식 지붕 (현대)</span>
+          <span class="tech-chip">잔디 슬라이딩 시스템</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 1940년대 RC 원형 구조에 21세기 첨단 기술을 덧입힌 사례. 동일한 부지에서 세대별 기술이 공존하는 '살아있는 건설기술 박물관'.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🗼</div>
+          <div class="card-title-block">
+            <h3>도쿄 타워</h3>
+            <div class="card-sub">Tokyo Tower · 일본 도쿄</div>
+          </div>
+          <div class="card-year">1957–1958년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">철탑 구조 — 에펠탑에서 영감을 받아 더 가볍고 높게 설계</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">강철(일부 한국전쟁 군용 차량 고철 재활용) 용접 접합. 에펠탑보다 13m 높으면서 무게는 3분의 1. 산화 방지 도장 3색 (국제 항공법 준수)</span></div>
+        <div class="info-row"><span class="info-label">높이</span><span class="info-value">333m · 무게 4,000톤 (에펠탑 7,300톤 대비 절약)</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">강철 용접 접합</span>
+          <span class="tech-chip">경량 고강도 설계</span>
+          <span class="tech-chip">방청 도장 기술</span>
+          <span class="tech-chip">재생 철강 활용</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 리벳 → 용접으로의 접합기술 발전이 구현됨. 동일한 철탑 구조에서 에펠탑보다 45% 가벼운 구조물 실현 — 구조 최적화 설계의 진화.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════
+       ERA 5 : 현대 초기
+  ═════════════════════════════ -->
+  <div class="era-section era-late-mod">
+    <div class="era-header">
+      <div class="era-dot"></div>
+      <div class="era-header-text">
+        <h2>⑤ 현대 초기 (Late Modern) — 1976년 ~ 2003년</h2>
+        <p>복합 구조와 특수 소재의 시대 | 대형 실내 공간과 수중·우주 건축</p>
+      </div>
+      <div class="era-tech-pill">핵심기술: 대형 유리돔 · 아크릴 패널 · ETFE · PC공법</div>
+    </div>
+    <div class="buildings-grid">
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🎡</div>
+          <div class="card-title-block">
+            <h3>에버랜드</h3>
+            <div class="card-sub">Everland · 경기도 용인</div>
+          </div>
+          <div class="card-year">1976년 개장</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">테마파크 건축 — 경험 중심 공간 설계, 놀이기구와 건축의 결합</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">철근콘크리트 기반 구조물에 강관 트러스, FRP(유리섬유강화플라스틱) 장식 구조물 조합. 부지 자연 지형 활용 (경사지 조경 설계)</span></div>
+        <div class="info-row"><span class="info-label">특징</span><span class="info-value">T-익스프레스(목조 롤러코스터), 허리케인 등 대형 놀이기구의 구조 안전 설계</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">강관 트러스</span>
+          <span class="tech-chip">FRP 조형물</span>
+          <span class="tech-chip">지형 활용 설계</span>
+          <span class="tech-chip">대형 레저 시설</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 단순 구조 기능을 넘어 '경험을 설계하는' 엔터테인먼트 건축의 시대. 안전 + 스릴을 동시에 충족하는 구조공학의 새 영역.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🎠</div>
+          <div class="card-title-block">
+            <h3>롯데월드 어드벤처</h3>
+            <div class="card-sub">Lotte World Adventure · 서울 송파</div>
+          </div>
+          <div class="card-year">1989년 개장</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">포스트모더니즘 복합 건축 — 실내 테마파크·호텔·쇼핑몰·아이스링크 통합</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">세계 최대 규모 실내 테마파크 실현: 대형 강철 스페이스 프레임 돔 지붕(직경 300m급), 천창(Skylight) 자연채광 시스템. 지하 연약지반 처리 (석촌호수 인근)</span></div>
+        <div class="info-row"><span class="info-label">특징</span><span class="info-value">개관 당시 세계 최대 실내 테마파크</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">대형 스페이스 프레임</span>
+          <span class="tech-chip">유리 돔 지붕</span>
+          <span class="tech-chip">연약지반 처리</span>
+          <span class="tech-chip">복합 용도 건축</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> '지붕 없는 하늘'처럼 느끼게 하는 초대형 유리 돔이 핵심. 스페이스 프레임 구조가 기둥 없이 넓은 공간을 덮는 시대를 열었다.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🚀</div>
+          <div class="card-title-block">
+            <h3>내셔널 스페이스 센터</h3>
+            <div class="card-sub">National Space Centre · 영국 레스터</div>
+          </div>
+          <div class="card-year">2001년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">하이테크 건축(High-tech Architecture) — 구조와 설비를 외부로 노출하는 테크니컬 미학</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">로켓 전시관: ETFE(에틸렌테트라플루오로에틸렌) 쿠션 막 구조. 공기압으로 투명 막을 부풀려 초대형 돔 형성. 유리보다 가볍고 단열 우수</span></div>
+        <div class="info-row"><span class="info-label">특징</span><span class="info-value">높이 42m 로켓 전시 공간을 ETFE로 완전 투명하게 구현</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">ETFE 막 구조</span>
+          <span class="tech-chip">공기압 쿠션</span>
+          <span class="tech-chip">하이테크 건축</span>
+          <span class="tech-chip">경량 투명 지붕</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> ETFE는 유리 무게의 1%, 투광성 95%. 베이징 올림픽 수영장(워터큐브)도 같은 소재. '플라스틱 필름'이 건축 주재료가 된 혁신.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🐠</div>
+          <div class="card-title-block">
+            <h3>추라우미 수족관</h3>
+            <div class="card-sub">Churaumi Aquarium · 일본 오키나와</div>
+          </div>
+          <div class="card-year">2002년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">해양 전시 건축 — 수중 세계를 지상에서 경험하는 공간 설계</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">메인 수조 '흑조의 바다': 두께 60cm 아크릴 패널 3장을 이음새 없이 제작 (22.5m × 8.2m, 세계 최대급). 수압 1,000톤을 견디는 구조 계산</span></div>
+        <div class="info-row"><span class="info-label">규모</span><span class="info-value">수조 용량 7,500톤 · 아크릴 판 두께 60cm</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">초대형 아크릴 패널</span>
+          <span class="tech-chip">수압 구조 계산</span>
+          <span class="tech-chip">투명 접합 기술</span>
+          <span class="tech-chip">해양 건축</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 60cm 두께 아크릴은 당시 세계 최대 단일 투명 구조물. 접합부 없이 대형 패널을 만드는 정밀 화학·가공 기술의 승리.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🦴</div>
+          <div class="card-title-block">
+            <h3>한국자연사박물관</h3>
+            <div class="card-sub">Korea Natural History Museum · 충청북도 청주</div>
+          </div>
+          <div class="card-year">2003년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">현대 박물관 건축 — 전시와 교육을 결합한 기능 중심 설계</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">철근콘크리트 구조 + 커튼월(Curtain Wall) 유리 외피. 대형 공룡 화석·광물 전시를 위한 내부 기둥 없는 오픈 플랜 구성 (장스팬 구조)</span></div>
+        <div class="info-row"><span class="info-label">특징</span><span class="info-value">공룡 골격 등 대형 전시물 반입을 고려한 특수 구조 계획</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">커튼월 유리</span>
+          <span class="tech-chip">장스팬 RC</span>
+          <span class="tech-chip">오픈 플랜</span>
+          <span class="tech-chip">전시 특화 설계</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 커튼월은 벽이 하중을 받지 않고 '커튼'처럼 매달린 외피. 내부 구조(골조)와 외피를 완전 분리함으로써 전면 유리 건물을 가능하게 한 현대 건축 혁신.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════
+       ERA 6 : 현대 (2004~현재)
+  ═════════════════════════════ -->
+  <div class="era-section era-contemp">
+    <div class="era-header">
+      <div class="era-dot"></div>
+      <div class="era-header-text">
+        <h2>⑥ 현대 (Contemporary) — 2004년 ~ 현재</h2>
+        <p>초고층·스마트 건축의 시대 | 컴퓨터 설계·친환경·내진기술의 집약</p>
+      </div>
+      <div class="era-tech-pill">핵심기술: 고강도 콘크리트 · BIM · 내진·면진 · 친환경</div>
+    </div>
+    <div class="buildings-grid">
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🏙️</div>
+          <div class="card-title-block">
+            <h3>부르즈 할리파</h3>
+            <div class="card-sub">Burj Khalifa · UAE 두바이</div>
+          </div>
+          <div class="card-year">2004–2010년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">신미래주의(Neo-Futurism) — 이슬람 무카르나스 문양에서 영감받은 점진적 세트백(계단식 후퇴) 실루엣</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">버트레스드 코어(Buttressed Core) 구조 — Y자형 평면에 중앙 콘크리트 코어+3개 날개가 서로 지지. 고강도 콘크리트(80MPa). 풍동 실험 40회 이상. 펌프카로 지상 600m까지 콘크리트 압송</span></div>
+        <div class="info-row"><span class="info-label">규모</span><span class="info-value">높이 828m · 163층 · 세계 최고층 (2010~현재)</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">버트레스드 코어</span>
+          <span class="tech-chip">고강도 콘크리트</span>
+          <span class="tech-chip">풍동 실험</span>
+          <span class="tech-chip">초고압 콘크리트 압송</span>
+          <span class="tech-chip">BIM 설계</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 600m 높이까지 콘크리트를 펌프로 압송하는 것 자체가 기술 혁신. 바람·일조·열팽창을 컴퓨터로 시뮬레이션해 설계한 최초의 건물군.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🏯</div>
+          <div class="card-title-block">
+            <h3>롯데월드타워</h3>
+            <div class="card-sub">Lotte World Tower · 서울 잠실</div>
+          </div>
+          <div class="card-year">2011–2017년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">한국 현대주의 — 한국 전통 도자기와 붓의 형태에서 영감받은 유선형 실루엣</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">잠실 석촌호수 인근 연약지반 → 직경 1m, 깊이 50m 철근콘크리트 파일 108개 타입. 이중 면진(면진+제진 복합) 시스템. 고강도 콘크리트(100MPa)+철골 아웃리거 구조</span></div>
+        <div class="info-row"><span class="info-label">규모</span><span class="info-value">높이 555m · 123층 · 국내 최고층</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">대구경 파일 기초</span>
+          <span class="tech-chip">면진+제진 복합</span>
+          <span class="tech-chip">아웃리거 구조</span>
+          <span class="tech-chip">100MPa 콘크리트</span>
+          <span class="tech-chip">디지털 파라메트릭 설계</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 연약지반 위 초고층의 도전. 진도 9.0 지진도 견디는 면진 시스템, 강풍 진동을 흡수하는 TMD(동조질량감쇠기) 설치.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🌟</div>
+          <div class="card-title-block">
+            <h3>시그니엘 서울</h3>
+            <div class="card-sub">Signiel Seoul · 서울 잠실 (롯데월드타워 내)</div>
+          </div>
+          <div class="card-year">2017년 개장</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">수직 복합 용도 건축 — 단일 타워에 호텔·오피스·레지던스·쇼핑 통합 (수직 도시 개념)</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">롯데월드타워 76~101층 점유. 고층부 강풍·기압차 대응 창호 설계. 초고층 엘리베이터 (분속 600m, 세계 최고속급). 스마트 BMS(건물관리시스템)</span></div>
+        <div class="info-row"><span class="info-label">위치</span><span class="info-value">지상 300m 이상 구간 · 서울 전경 360도 전망</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">수직 복합용도</span>
+          <span class="tech-chip">초고속 엘리베이터</span>
+          <span class="tech-chip">스마트 BMS</span>
+          <span class="tech-chip">고층 창호 기술</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 초고층에서의 거주 쾌적성이 주요 기술 과제. 엘리베이터·공조·전기·소방 등 모든 설비가 건축 구조와 통합 설계되는 '스마트 빌딩' 시대.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🌊</div>
+          <div class="card-title-block">
+            <h3>Waldorf Astoria Maldives</h3>
+            <div class="card-sub">Waldorf Astoria Ithaafushi · 몰디브</div>
+          </div>
+          <div class="card-year">2019년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">수상 리조트 건축(Overwater Architecture) — 해양 생태계와 공존하는 지속가능 설계</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">해수면 상승 대응 수상 기초(부유식+말뚝식 복합). 산호초 보호 구역 우회 기초 배치. 내염성 강화 소재 및 방식(防蝕) 코팅. 태양광 패널·빗물 재활용 친환경 시스템</span></div>
+        <div class="info-row"><span class="info-label">특징</span><span class="info-value">수상 빌라·수중 레스토랑·수상 활주로</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">수상 기초</span>
+          <span class="tech-chip">내염성 소재</span>
+          <span class="tech-chip">방식 코팅</span>
+          <span class="tech-chip">친환경 에너지</span>
+          <span class="tech-chip">해양 생태 고려</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> 건설이 불가능한 곳에 건설하는 도전. 해수(염분)·파랑·생태계를 모두 고려한 현대 건설의 새 패러다임 — '지속가능한 건설기술'.</div>
+      </div>
+
+      <div class="building-card">
+        <div class="card-top">
+          <div class="card-icon">🛍️</div>
+          <div class="card-title-block">
+            <h3>스타필드 수원</h3>
+            <div class="card-sub">Starfield Suwon · 경기도 수원</div>
+          </div>
+          <div class="card-year">2023년</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="info-row"><span class="info-label">건축양식</span><span class="info-value">현대 메가몰 건축 — 쇼핑·문화·레저 복합 (Mega Mixed-Use)</span></div>
+        <div class="info-row"><span class="info-label">건축공법</span><span class="info-value">장스팬 철골 구조로 넓은 실내 공간 구현. 에너지 효율 향상을 위한 고성능 커튼월 유리. BIM(Building Information Modeling)으로 설계-시공-유지관리 일원화. 스마트 주차 시스템·IoT 통합</span></div>
+        <div class="info-row"><span class="info-label">규모</span><span class="info-value">연면적 약 33만㎡ · 한국 최대급 쇼핑몰</span></div>
+        <div class="tech-chips">
+          <span class="tech-chip">BIM 통합 설계</span>
+          <span class="tech-chip">장스팬 철골</span>
+          <span class="tech-chip">고성능 커튼월</span>
+          <span class="tech-chip">IoT·스마트 빌딩</span>
+          <span class="tech-chip">친환경 인증</span>
+        </div>
+        <div class="card-highlight"><strong>🔑 핵심 포인트:</strong> BIM은 3D 가상 건물을 컴퓨터에 미리 완성한 뒤 시공하는 방식. 설계 오류를 미리 발견하고 자재를 정밀 계산 — 낭비 없는 디지털 건설의 현재.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DISCUSSION BOX -->
+  <div class="discussion-box">
+    <h2>💬 수업 토의 및 발표 탐구 질문</h2>
+    <ul class="q-list">
+      <li>
+        <div class="q-num">1</div>
+        <div class="q-text">피라미드(BC 2560년)와 부르즈 할리파(2010년)의 가장 큰 건설기술 차이는 무엇인가요? 그 차이를 만든 결정적인 발명이나 재료는 무엇이라고 생각하나요?</div>
+      </li>
+      <li>
+        <div class="q-num">2</div>
+        <div class="q-text">에펠탑(1889)과 도쿄 타워(1958)는 모두 철탑 구조입니다. 69년 사이에 어떤 기술 발전이 있었기에 도쿄 타워가 에펠탑보다 13m 높으면서도 훨씬 가볍게 만들어질 수 있었을까요?</div>
+      </li>
+      <li>
+        <div class="q-num">3</div>
+        <div class="q-text">피사의 사탑이 기울어진 이유는 무엇인가요? 만약 현대 기술로 피사의 사탑을 지금 새로 짓는다면 어떤 기초 공법을 사용할 것 같나요?</div>
+      </li>
+      <li>
+        <div class="q-num">4</div>
+        <div class="q-text">여러분이 선정한 건축물이 지어진 시대에는 어떤 도구와 재료가 없었나요? 그 한계를 당시 건설자들은 어떤 방법으로 극복했나요?</div>
+      </li>
+      <li>
+        <div class="q-num">5</div>
+        <div class="q-text">롯데월드타워(555m, 2017)는 연약한 지반 위에 세워졌습니다. 어떤 기초 기술과 내진 기술이 사용되었는지 조사하고, 고대 피라미드의 기초와 비교해 발표해 보세요.</div>
+      </li>
+      <li>
+        <div class="q-num">6</div>
+        <div class="q-text">미래의 건설기술은 어떤 방향으로 발전할까요? 현재 등장하고 있는 새로운 건설기술(3D 프린팅 건축, 모듈러 건설, 우주 건설 등)을 조사하고 예상해 봅시다.</div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="lesson-footer">
+  <div>📐 여주중학교 · 기술·가정 2학년 기술 영역 수업자료</div>
+  <div>건설기술의 발달 역사 | 학생 선정 건축물 20선</div>
+</div>
+
+<!-- EXPLAIN MODAL -->
+<div class="explain-overlay" id="explainOverlay" onclick="closeExplain(event)">
+  <div class="explain-box" id="explainBox">
+    <button class="explain-close" onclick="closeExplain()">✕</button>
+    <div class="explain-cat" id="explainCat"></div>
+    <div class="explain-title" id="explainTitle"></div>
+    <div class="explain-body" id="explainBody"></div>
+    <div class="explain-example" id="explainExample" style="display:none">
+      <div class="explain-example-lbl">🏛️ 대표 사례</div>
+      <div id="explainExampleText"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const EXPLAIN = {
+
+  /* ═══════════ 건축 양식 ═══════════ */
+  '고대 이집트식': {
+    cat:'건축 양식', color:'#b85a1a',
+    desc:`<p><strong>고대 이집트 건축</strong>은 기원전 3000년경부터 약 3,000년에 걸쳐 지속된 양식입니다. 핵심 가치는 <strong>영원성</strong>과 <strong>거대함(모뉴멘털리즘)</strong>입니다. 파라오의 신성한 권위를 돌에 담아내는 것이 목표였기 때문에 수십 년에 걸쳐 수백만 개의 석재를 쌓아 올렸습니다.</p>
+    <p>피라미드의 발전 단계는 다음과 같습니다: <strong>마스타바(직사각형 벽돌 무덤) → 계단식 피라미드(여러 마스타바를 쌓아 올림) → 진정한 피라미드(매끄러운 경사면)</strong>. 이는 수백 년에 걸친 기술 축적의 결과입니다.</p>
+    <p>벽면에는 히에로글리프와 부조 장식이 빼곡히 새겨지며, 대칭 배치와 수직·수평선 강조가 특징입니다.</p>`,
+    ex:'기자의 피라미드, 카르나크 신전, 아부심벨 신전'
+  },
+  '로마 건축': {
+    cat:'건축 양식', color:'#b85a1a',
+    desc:`<p><strong>로마 건축</strong>은 기원전 2세기~서기 4세기에 걸쳐 지중해 전역에 퍼진 양식으로, 그리스 건축을 흡수하면서 <strong>아치(arch), 볼트(vault), 로만 콘크리트</strong>를 결합해 더 크고 실용적인 공간을 만들었습니다.</p>
+    <p>핵심 특징은 <strong>실용성과 공학성</strong>입니다. 신전뿐 아니라 원형경기장, 공중목욕탕, 수도교, 도로 등 시민 생활을 위한 인프라를 건설하는 데 탁월했습니다.</p>
+    <p>3단 주범이란 1층 도리아식 기둥, 2층 이오니아식 기둥, 3층 코린트식 기둥을 쌓아 올리는 로마 건축의 전형적인 파사드 구성을 말합니다.</p>`,
+    ex:'콜로세움, 판테온, 로마 수도교, 하드리아누스의 방벽'
+  },
+  '로마네스크 양식': {
+    cat:'건축 양식', color:'#6b3ab8',
+    desc:`<p><strong>로마네스크 양식</strong>은 10~12세기 중세 유럽에서 유행한 건축 양식으로, '로마풍(Roman-like)'이라는 뜻입니다. <strong>두꺼운 돌벽, 반원형 아치, 육중한 기둥</strong>이 특징이며 주로 수도원·교회·탑에 사용되었습니다.</p>
+    <p>창문이 작아 내부가 어둡지만 <strong>웅장하고 견고한 느낌</strong>을 줍니다. 이후 등장하는 고딕 양식의 첨두아치·플라잉 버트레스와 달리 구조적으로 단순하고 육중한 편입니다. 피사의 사탑처럼 흰 대리석 기둥(주랑)을 반복 배치하는 장식이 특징적입니다.</p>`,
+    ex:'피사의 사탑, 더럼 대성당, 클뤼니 수도원'
+  },
+  '빅토리아 고딕 리바이벌': {
+    cat:'건축 양식', color:'#1a6fa8',
+    desc:`<p><strong>빅토리아 고딕 리바이벌(Victorian Gothic Revival)</strong>은 19세기 영국 빅토리아 시대에 중세 고딕 건축의 첨탑·아치·장식을 부활시키려 한 양식입니다.</p>
+    <p>산업혁명으로 기계적이고 실용적인 건물이 넘쳐나던 시대에, 낭만주의적 반동으로 중세의 장인 정신과 종교적 숭고함을 건축으로 되살리려 했습니다. <strong>뾰족한 첨탑, 첨두아치, 정교한 석조 장식</strong>이 특징입니다.</p>
+    <p>빅 벤처럼 철제 내부 골조에 석재 외장을 결합해, 새로운 산업 재료(철)와 전통 양식을 함께 사용하는 과도기적 특징도 보입니다.</p>`,
+    ex:'빅 벤(엘리자베스 타워), 영국 국회의사당, 런던 세인트 판크라스 역'
+  },
+  '구조 표현주의': {
+    cat:'건축 양식', color:'#1a6fa8',
+    desc:`<p><strong>구조 표현주의(Structural Expressionism)</strong>는 건축물의 구조(뼈대)를 숨기지 않고 <strong>외부에 그대로 드러내어 디자인 요소로 활용</strong>하는 양식입니다. 19세기 산업혁명으로 대량 생산된 철강을 활용하며 등장했습니다.</p>
+    <p>에펠탑이 가장 대표적입니다. 전통 건축에서는 구조(뼈대)를 벽과 장식으로 가렸지만, 에펠탑은 철골 격자 자체가 아름다움이 됩니다. <strong>"구조가 곧 미학"</strong>이라는 새로운 건축 철학을 제시한 것입니다.</p>
+    <p>이 양식은 이후 20세기 후반 하이테크 건축(퐁피두 센터 등)으로 이어집니다.</p>`,
+    ex:'에펠탑, 퐁피두 센터(파리), 홍콩 HSBC 본사'
+  },
+  '하이테크 건축': {
+    cat:'건축 양식', color:'#a81a5a',
+    desc:`<p><strong>하이테크 건축(High-Tech Architecture)</strong>은 1970~80년대에 등장한 양식으로, 건물의 구조·설비·배관 등을 <strong>외부로 노출</strong>시켜 기술 자체를 미학으로 삼습니다. '구조 표현주의'의 현대적 계승이라 할 수 있습니다.</p>
+    <p>철골 프레임, 유리 커튼월, 노출된 에스컬레이터와 배관, 색으로 구분된 배선 등이 특징입니다. ETFE 막 구조처럼 새로운 공업 소재를 과감히 건축에 적용하는 실험 정신이 핵심입니다.</p>`,
+    ex:'내셔널 스페이스 센터, 파리 퐁피두 센터, 홍콩 첵랍콕 공항'
+  },
+  '포스트모더니즘 복합 건축': {
+    cat:'건축 양식', color:'#a81a5a',
+    desc:`<p><strong>포스트모더니즘 복합 건축(Postmodern Mixed-Use Architecture)</strong>은 하나의 건물 안에 다양한 기능(쇼핑·호텔·테마파크·문화시설)을 통합하면서, 단일 양식의 순수성보다 <strong>다양성·복합성·대중 친화성</strong>을 추구합니다.</p>
+    <p>롯데월드 어드벤처처럼 '실내에 하늘이 있는 것 같은' 공간 연출, 역사적 양식의 절충적 사용, 화려하고 오락적인 디자인이 특징입니다. 모더니즘의 엄격한 기능주의에 대한 반발로 탄생했습니다.</p>`,
+    ex:'롯데월드 어드벤처, 라스베이거스 대형 호텔·카지노'
+  },
+  '신미래주의': {
+    cat:'건축 양식', color:'#8a6a00',
+    desc:`<p><strong>신미래주의(Neo-Futurism)</strong>는 21세기 컴퓨터 설계 기술을 활용해 이전에는 불가능했던 유기적·역동적 형태를 구현하는 양식입니다. 단순한 기하학적 형태를 넘어 <strong>자연물·전통 문화에서 영감받은 유선형 실루엣</strong>이 특징입니다.</p>
+    <p>부르즈 할리파는 이슬람 전통 건축 장식인 무카르나스(꿀벌집 모양 천장 장식) 문양에서 영감받은 Y자형 평면과 위로 갈수록 점차 줄어드는 '세트백(set-back)' 실루엣을 컴퓨터로 최적화해 설계했습니다.</p>`,
+    ex:'부르즈 할리파, 자하 하디드 건축물들, 베이징 올림픽 경기장'
+  },
+  '한국 현대주의': {
+    cat:'건축 양식', color:'#8a6a00',
+    desc:`<p><strong>한국 현대주의 건축</strong>은 서구의 모더니즘·첨단 기술을 수용하면서 <strong>한국 전통 문화·미학</strong>을 현대적으로 재해석하는 양식입니다.</p>
+    <p>롯데월드타워는 한국 전통 도자기의 청아한 곡선, 조선 시대 붓글씨의 흘림 획에서 영감받은 유선형 실루엣을 컴퓨터 파라메트릭 설계로 구현했습니다. 서구 초고층 빌딩과 달리 <strong>위로 갈수록 가늘어지는 우아한 곡선</strong>이 한국적 정서를 담아냅니다.</p>`,
+    ex:'롯데월드타워, 동대문 디자인 플라자(DDP)'
+  },
+
+  /* ═══════════ 건축 공법 / 기술 ═══════════ */
+  '석재 조적': {
+    cat:'건축 기법', color:'#b85a1a',
+    desc:`<p><strong>석재 조적(Masonry)</strong>은 돌이나 벽돌을 쌓아 건물을 짓는 가장 오래된 건설 기법입니다. 재료 자체의 무게(중력)로 안정성을 유지하며, 접착제 없이 돌을 정밀하게 맞물리게 쌓거나 석회 모르타르를 사용합니다.</p>
+    <p>피라미드에 사용된 석회암 블록 하나의 평균 무게는 2.5톤이며 약 230만 개가 사용되었습니다. 현대 레이저 측량 없이 수평 오차 2cm 이내로 쌓아 올린 것은 지금도 경이롭습니다. <strong>압축력에는 강하지만 인장력(당기는 힘)에 약한 것</strong>이 석재의 한계로, 이를 극복하기 위해 아치 구조가 발명됩니다.</p>`,
+    ex:'이집트 피라미드, 콜로세움, 피사의 사탑'
+  },
+  '경사로 공법': {
+    cat:'건축 기법', color:'#b85a1a',
+    desc:`<p><strong>경사로 공법(Ramp Method)</strong>은 크레인 없이 무거운 석재를 높이 올리기 위해 완만한 경사로(램프)를 활용하는 기법입니다. 경사로 위에 통나무 롤러나 썰매를 놓고 돌을 밀어 올렸습니다.</p>
+    <p>학자마다 직선 경사로, 나선형 경사로, 지그재그 경사로 등 다양한 가설이 있으며 아직 완전히 규명되지 않았습니다. 경사로 자체도 피라미드에 버금가는 양의 재료를 소비하는 대규모 토목 공사였습니다.</p>`,
+    ex:'이집트 피라미드, 고대 신전 건설'
+  },
+  '로마 콘크리트': {
+    cat:'건축 기법', color:'#b85a1a',
+    desc:`<p><strong>로마 콘크리트(Opus Caementicium)</strong>는 화산재인 <strong>포촐라나(pozzolana)</strong>와 석회, 바닷물, 암석 조각을 혼합한 고대 로마의 혁신적 건설 재료입니다. 포촐라나가 석회와 반응해 굳으면 현대 콘크리트보다도 강력한 구조물이 됩니다.</p>
+    <p>놀라운 점은 <strong>바닷물에 잠긴 로마 콘크리트가 시간이 지날수록 더 단단해진다</strong>는 것입니다. 균열이 생기면 물속 광물이 틈을 채워 자가 치유가 됩니다. 2,000년이 지난 판테온의 돔이 아직도 균열 없이 서 있는 비결입니다.</p>`,
+    ex:'콜로세움, 판테온, 로마 수도교'
+  },
+  '아치·볼트 구조': {
+    cat:'건축 기법', color:'#b85a1a',
+    desc:`<p><strong>아치(Arch)</strong>는 쐐기 모양의 돌을 반원형으로 배열해 상부 하중을 양쪽 기둥으로 분산시키는 구조입니다. 돌이 서로를 밀어내는 <strong>압축력</strong>으로 전체 구조가 유지됩니다.</p>
+    <p><strong>볼트(Vault)</strong>는 아치를 한 방향으로 연속 연장한 3차원 구조입니다. 볼트 덕분에 평평한 천장보다 훨씬 넓은 실내 공간을 기둥 없이 덮을 수 있었습니다.</p>
+    <p>이 기술이 없었다면 콜로세움처럼 5만 명을 수용하는 거대 건물은 불가능했습니다. 이후 중세 고딕 대성당의 리브 볼트로 이어집니다.</p>`,
+    ex:'콜로세움, 판테온, 중세 고딕 대성당'
+  },
+  '주철 프레임': {
+    cat:'건축 기법', color:'#1a6fa8',
+    desc:`<p><strong>주철(Cast Iron) 프레임</strong>은 쇳물을 틀에 부어 만든 철 부재로 건물의 뼈대를 구성하는 기법입니다. 19세기 산업혁명 초기에 등장했으며, 기존 석재·목재 구조의 한계를 넘을 수 있었습니다.</p>
+    <p>주철은 압축에는 강하지만 충격이나 인장력에 약해 쉽게 부러질 수 있습니다. 이후 더 강한 <strong>연철(Wrought Iron) → 강철(Steel)</strong>로 발전합니다. 빅 벤처럼 전통 석조 외관 안에 주철 내부 골조를 삽입하는 과도기적 방식이 특징입니다.</p>`,
+    ex:'빅 벤, 수정궁(Crystal Palace), 초기 철교들'
+  },
+  '고딕 리바이벌': {
+    cat:'건축 기법', color:'#1a6fa8',
+    desc:`<p><strong>고딕 리바이벌(Gothic Revival)</strong>은 중세 고딕 건축의 요소를 19세기에 다시 사용하는 것을 말합니다. 단순한 복고가 아니라 <strong>새로운 재료(철)와 기술로 더 정교하게 재현</strong>하는 것이 특징입니다.</p>
+    <p>중세 고딕 건축의 핵심 요소는 <strong>첨두아치</strong>(뾰족한 아치), <strong>리브 볼트</strong>(갈빗대 모양 천장 구조), <strong>플라잉 버트레스</strong>(벽을 밖에서 받치는 아치형 지지대), <strong>스테인드글라스</strong>입니다. 이를 통해 벽을 최대한 얇게 만들고 창문을 크게 뚫어 빛이 쏟아지는 신비로운 공간을 연출했습니다.</p>`,
+    ex:'빅 벤, 영국 국회의사당, 노트르담 대성당(파리)'
+  },
+  '철골 트러스': {
+    cat:'건축 기법', color:'#1a6fa8',
+    desc:`<p><strong>트러스(Truss)</strong>는 삼각형을 기본 단위로 여러 부재를 연결한 구조 시스템입니다. 삼각형은 변의 길이가 고정되면 형태가 변하지 않는 <strong>가장 안정적인 기하학 도형</strong>이기 때문에, 트러스는 가볍고 강합니다.</p>
+    <p>철골 트러스는 이 삼각형 단위를 강철로 만들어 연결한 것입니다. 지붕이나 교량처럼 <strong>넓은 공간을 기둥 없이 덮을 때</strong> 특히 유용합니다. 안필드처럼 관중석 위로 기둥 없이 지붕을 뻗는 것도 철골 트러스 덕분입니다.</p>`,
+    ex:'안필드 스타디움, 에펠탑, 도쿄 타워, 철교들'
+  },
+  '캔틸레버 관중석': {
+    cat:'건축 기법', color:'#1a6fa8',
+    desc:`<p><strong>캔틸레버(Cantilever)</strong>는 한쪽 끝만 고정된 채 공중으로 돌출된 구조입니다. 다이빙대처럼 한쪽만 지지점이 있고 나머지는 허공에 뻗어 있는 형태입니다.</p>
+    <p>경기장 관중석에 캔틸레버를 사용하면 <strong>관중석 앞에 기둥이 없어</strong> 시야가 완전히 트입니다. 고정된 끝에는 엄청난 인장력이 걸리기 때문에 강철 없이는 불가능한 구조입니다. 현대 경기장 지붕 대부분이 이 원리를 사용합니다.</p>`,
+    ex:'안필드 스타디움, 올드 트래퍼드, 현대 경기장 지붕'
+  },
+  '연철 조립식': {
+    cat:'건축 기법', color:'#1a6fa8',
+    desc:`<p><strong>연철(Wrought Iron, 퍼들 아이언)</strong>은 탄소 함량이 매우 낮은 철로, 주철보다 <strong>인성(충격에 강한 성질)이 훨씬 높아</strong> 충격에도 잘 부러지지 않습니다. 에펠탑에 사용된 핵심 재료입니다.</p>
+    <p>조립식(Assembled) 방식은 수천 개의 부재를 공장에서 규격대로 제작한 뒤 현장에서 조립만 하는 방식입니다. 에펠탑은 18,038개의 연철 부재를 공장에서 만들고 250만 개 리벳으로 현장에서 결합했습니다. 2년 2개월 만에 완성된 비결이 바로 이 조립식 공법입니다.</p>`,
+    ex:'에펠탑, 자유의 여신상 내부 골조'
+  },
+  '리벳 접합 300만 개': {
+    cat:'건축 기법', color:'#1a6fa8',
+    desc:`<p><strong>리벳(Rivet)</strong>은 두 철판에 구멍을 뚫고 금속 핀을 박아 끝을 눌러 고정하는 접합 방식입니다. 볼트·너트나 용접이 일반화되기 전인 19세기 철골 구조의 핵심 연결 기술이었습니다.</p>
+    <p>에펠탑에는 약 250만(300만) 개의 리벳이 사용되었습니다. 빨갛게 달군 리벳을 집게로 잡아 구멍에 삽입하고 반대편에서 망치로 두드리면 끝이 납작해지며 결합됩니다. <strong>냉각되면서 수축해 결합력이 더욱 강해지는</strong> 원리입니다. 지금은 고장력 볼트와 용접으로 대체되었습니다.</p>`,
+    ex:'에펠탑, 자유의 여신상 내부 골조, 초기 철교'
+  },
+  '공장 프리패브': {
+    cat:'건축 기법', color:'#1a6fa8',
+    desc:`<p><strong>프리패브리케이션(Prefabrication)</strong>은 건설 부재를 현장이 아닌 <strong>공장에서 미리 제작</strong>하고 현장에서 조립만 하는 방식입니다. 현장에서 모든 것을 만드는 전통 방식보다 정밀도·속도·비용 면에서 유리합니다.</p>
+    <p>에펠탑은 이 방식의 선구자입니다. 18,038개 부품이 공장에서 규격에 맞게 제작되어 번호가 매겨진 채 현장으로 운반되었습니다. 오늘날 모듈러 건축, PC(프리캐스트 콘크리트) 공법, 모듈러 주택의 원조입니다.</p>`,
+    ex:'에펠탑, 자유의 여신상, 현대 아파트 PC 공법'
+  },
+  '풍동 설계': {
+    cat:'건축 기법', color:'#1a6fa8',
+    desc:`<p><strong>풍동 설계(Wind Tunnel Design)</strong>는 건물의 실물 또는 축소 모형을 바람 터널에 넣어 실제 바람을 흘려 보내면서 풍압과 구조 거동을 분석하는 기법입니다.</p>
+    <p>에펠탑의 외형이 위로 갈수록 가늘어지는 포물선 곡선인 것은 단순한 미적 선택이 아니라 <strong>각 높이에서 바람 압력과 하중을 수식으로 계산한 결과</strong>입니다. 덕분에 강풍 시 에펠탑 꼭대기의 흔들림은 약 7cm에 불과합니다. 부르즈 할리파는 풍동 실험을 40회 이상 진행했습니다.</p>`,
+    ex:'에펠탑, 부르즈 할리파, 현대 초고층 건물 대부분'
+  },
+  'RC 구조': {
+    cat:'건축 기법', color:'#1a8a4a',
+    desc:`<p><strong>RC 구조(철근콘크리트, Reinforced Concrete)</strong>는 콘크리트 안에 철근(금속 막대)을 넣어 두 재료의 장점을 결합한 건설 기법입니다.</p>
+    <p>콘크리트는 <strong>압축력에 강하지만 인장력(당기는 힘)에 약합니다</strong>. 철근은 반대로 인장력에 강합니다. 두 재료를 결합하면 압축과 인장 모두에 강한 구조물이 완성됩니다. 20세기 거의 모든 건물의 기본 구조 방식으로, 아파트·다리·경기장 등 현대 건설의 근간입니다.</p>`,
+    ex:'산티아고 베르나베우, 롯데 사직야구장, 현대 아파트 대부분'
+  },
+  '강철 용접 접합': {
+    cat:'건축 기법', color:'#1a8a4a',
+    desc:`<p><strong>용접 접합(Welded Connection)</strong>은 금속을 고열로 녹여 두 부재를 하나로 융합시키는 접합 방식입니다. 에펠탑의 리벳 접합과 비교하면 <strong>더 강하고 빠르며 가벼운 구조물</strong>을 만들 수 있습니다.</p>
+    <p>도쿄 타워가 에펠탑보다 13m 높으면서도 무게가 45% 가벼운 이유 중 하나가 바로 용접 접합입니다. 리벳은 수십 명의 작업자가 필요한 반면 용접은 소수의 전문 용접사로 가능합니다. 20세기 이후 철골 건물의 표준 접합 방식이 되었습니다.</p>`,
+    ex:'도쿄 타워, 현대 철골 건물 대부분'
+  },
+  'ETFE 막 구조': {
+    cat:'건축 기법', color:'#a81a5a',
+    desc:`<p><strong>ETFE(에틸렌테트라플루오로에틸렌)</strong>는 불소 계열 고분자 플라스틱 필름으로, 건축용 투명 막 재료로 혁신을 일으켰습니다.</p>
+    <p>핵심 장점: <strong>유리 무게의 1%에 불과</strong>하고, 투광성 95%, 내구성 25년 이상, 자가 세정 기능(먼지가 달라붙지 않음)이 있습니다. 두 장 이상의 막 사이에 공기를 넣어 부풀리는 '에어쿠션' 방식으로 단열 성능도 뛰어납니다. 베이징 올림픽 수영장(워터큐브)의 비눗방울 모양 외피도 ETFE입니다.</p>`,
+    ex:'내셔널 스페이스 센터, 베이징 올림픽 수영장(워터큐브), 에덴 프로젝트'
+  },
+  '대형 스페이스 프레임': {
+    cat:'건축 기법', color:'#a81a5a',
+    desc:`<p><strong>스페이스 프레임(Space Frame)</strong>은 짧은 철재 부재들을 3차원 삼각형 구조로 연결한 입체 격자 구조입니다. 2차원 트러스를 3차원으로 확장한 것입니다.</p>
+    <p>핵심 장점은 <strong>기둥 없이 매우 넓은 공간을 덮을 수 있다</strong>는 것입니다. 하중이 3차원 격자 전체로 고르게 분산되기 때문에 어느 방향의 하중도 효율적으로 처리합니다. 롯데월드 어드벤처처럼 거대한 실내 공간의 지붕을 덮거나, 공항·체육관·전시장 지붕에 널리 사용됩니다.</p>`,
+    ex:'롯데월드 어드벤처, 인천공항, 코엑스 전시장'
+  },
+  '커튼월 유리': {
+    cat:'건축 기법', color:'#a81a5a',
+    desc:`<p><strong>커튼월(Curtain Wall)</strong>은 건물의 구조 골조(기둥·보)와 별도로 건물 외피(벽·유리)를 마치 커튼처럼 매달아 고정하는 공법입니다.</p>
+    <p>외벽이 하중을 지지하지 않기 때문에 <strong>얇은 유리 패널로 건물 전면을 감쌀 수 있습니다.</strong> 공장에서 유리 패널과 알루미늄 프레임을 모듈로 만들어 현장에서 조립하므로 빠릅니다. 현대 도시 마천루의 유리 외관 대부분이 이 방식입니다. 커튼월 덕분에 내부와 외부 공간의 경계를 투명하게 만드는 현대 건축이 가능해졌습니다.</p>`,
+    ex:'한국자연사박물관, 63빌딩, 롯데월드타워, 스타필드 수원'
+  },
+  '버트레스드 코어': {
+    cat:'건축 기법', color:'#8a6a00',
+    desc:`<p><strong>버트레스드 코어(Buttressed Core)</strong>는 부르즈 할리파에 적용된 독창적 구조 시스템입니다. 건물 중앙의 육각형 콘크리트 코어에서 Y자형으로 3개의 '날개' 구조가 뻗어 나오며, 각 날개가 서로를 지지합니다.</p>
+    <p>중세 고딕 대성당의 <strong>플라잉 버트레스(flying buttress, 외부 지지 아치)</strong>에서 이름을 따온 이 시스템은, 날개들이 코어를 서로 버텨주며 비틀림과 횡력(바람, 지진)에 저항합니다. 828m 높이에서 받는 어마어마한 바람 하중을 이 Y자형 구조로 분산합니다.</p>`,
+    ex:'부르즈 할리파'
+  },
+  '고강도 콘크리트': {
+    cat:'건축 기법', color:'#8a6a00',
+    desc:`<p><strong>고강도 콘크리트(High-Strength Concrete)</strong>는 일반 콘크리트(압축강도 24~30MPa)보다 훨씬 강한 콘크리트입니다. 부르즈 할리파는 80MPa, 롯데월드타워는 최대 100MPa 콘크리트를 사용했습니다.</p>
+    <p>강도를 높이기 위해 물-시멘트 비를 낮추고 실리카 흄·플라이 애시 등 미세 입자를 첨가합니다. <strong>MPa(메가파스칼)</strong>이란 압력 단위로 1MPa = 10kgf/cm²입니다. 100MPa 콘크리트는 10cm² 면적에 1,000kg의 하중을 버틴다는 뜻입니다. 초고층 건물의 하부 기둥에 필수적입니다.</p>`,
+    ex:'부르즈 할리파(80MPa), 롯데월드타워(100MPa)'
+  },
+  'BIM 설계': {
+    cat:'건축 기법', color:'#8a6a00',
+    desc:`<p><strong>BIM(Building Information Modeling, 건축 정보 모델링)</strong>은 건물의 모든 정보(구조, 설비, 마감, 비용, 공정 등)를 <strong>3D 디지털 모델 하나에 통합</strong>해 설계·시공·유지보수 전 과정을 관리하는 기술입니다.</p>
+    <p>착공 전에 컴퓨터 속에서 건물을 완전히 한 번 지어보므로, 배관과 전기선이 겹치는 문제나 구조 부재 간 충돌을 미리 발견해 수정할 수 있습니다. 설계 오류를 미리 발견하고 자재를 정밀 계산해 낭비를 줄입니다. 현대 초고층·대형 건물 시공에서 BIM 없는 건설은 사실상 불가능합니다.</p>`,
+    ex:'부르즈 할리파, 롯데월드타워, 스타필드 수원'
+  },
+  '아웃리거 구조': {
+    cat:'건축 기법', color:'#8a6a00',
+    desc:`<p><strong>아웃리거(Outrigger) 구조</strong>는 초고층 건물의 중앙 코어(엘리베이터·계단실을 담은 콘크리트 벽체)와 건물 외곽 기둥을 <strong>수평 트러스(아웃리거)로 연결</strong>해 강풍·지진으로 인한 횡력(옆으로 미는 힘)에 저항하는 구조 시스템입니다.</p>
+    <p>노를 젓는 배의 아웃리거(배를 안정시키는 가로대)에서 이름을 따왔습니다. 롯데월드타워는 여러 층에 걸쳐 아웃리거 층을 두어 강풍과 지진에 저항합니다. <strong>마치 배의 아웃리거처럼 건물이 옆으로 쓰러지지 않도록 버텨주는 역할</strong>을 합니다.</p>`,
+    ex:'롯데월드타워, 부르즈 할리파, 타이베이 101'
+  },
+  '면진+제진 복합': {
+    cat:'건축 기법', color:'#8a6a00',
+    desc:`<p>지진으로부터 건물을 보호하는 기술에는 세 가지가 있습니다:</p>
+    <p><strong>내진(耐震)</strong>: 건물 자체를 튼튼하게 만들어 지진 하중을 버팁니다. 기본 방법이지만 건물 손상이 생길 수 있습니다.</p>
+    <p><strong>면진(免震)</strong>: 건물 기초와 지반 사이에 특수 패드(면진장치)를 삽입해 지진 진동이 건물에 전달되는 것을 막습니다. 건물이 지반 위에서 둥둥 떠있는 것처럼 흔들립니다.</p>
+    <p><strong>제진(制震)</strong>: 건물 안에 댐퍼(진동 흡수 장치)를 설치해 진동 에너지를 흡수합니다. TMD(동조질량감쇠기)처럼 큰 쇠공을 스프링으로 연결해 진동을 상쇄합니다.</p>
+    <p>롯데월드타워는 <strong>면진+제진을 동시에 적용</strong>해 진도 9.0 지진도 견딥니다.</p>`,
+    ex:'롯데월드타워, 타이베이 101(TMD), 일본 현대 건물'
+  },
+  '대구경 파일 기초': {
+    cat:'건축 기법', color:'#8a6a00',
+    desc:`<p><strong>파일(Pile, 말뚝) 기초</strong>는 지반이 약한 곳에서 깊고 강한 암반층까지 기둥(말뚝)을 박아 건물 하중을 전달하는 기초 방식입니다.</p>
+    <p>롯데월드타워 부지(석촌호수 인근)는 연약한 충적 지반이었습니다. 이를 극복하기 위해 <strong>지름 1m, 깊이 50m의 철근콘크리트 파일 108개</strong>를 박았습니다. 50m는 아파트 17층 높이에 해당합니다. 이 파일들이 555m 타워의 무게를 단단한 암반층까지 전달합니다. 피사의 사탑이 연약 지반 위에 기초를 잘못 설계해 기울어진 것과 정반대의 접근입니다.</p>`,
+    ex:'롯데월드타워, 부르즈 할리파, 연약지반 위 모든 초고층 건물'
+  },
+  'BIM 통합 설계': {
+    cat:'건축 기법', color:'#8a6a00',
+    desc:`<p><strong>BIM 통합 설계</strong>는 건물의 설계-시공-유지관리 전 과정을 하나의 3D 디지털 모델로 연결하는 방식입니다. 설계자·시공자·설비업체가 같은 모델을 공유하므로 소통 오류가 줄고 효율이 높아집니다.</p>
+    <p>스타필드 수원처럼 연면적 33만㎡의 복잡한 대형 건물에서는 BIM이 없으면 수천 개의 설비 배관, 전기선, 구조 부재가 서로 충돌하는 문제를 착공 전에 발견하기 어렵습니다. <strong>'디지털 트윈(Digital Twin)'</strong>이라고도 불리며, 완공 후에도 유지보수에 활용됩니다.</p>`,
+    ex:'스타필드 수원, 롯데월드타워, 현대 대형 건물'
+  },
+};
+
+function openExplain(key) {
+  const info = EXPLAIN[key];
+  if (!info) return;
+  document.getElementById('explainCat').textContent = info.cat;
+  document.getElementById('explainCat').style.cssText =
+    `background:${info.color}22;color:${info.color};font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 11px;border-radius:20px;display:inline-block;margin-bottom:10px`;
+  document.getElementById('explainTitle').textContent = key;
+  document.getElementById('explainBody').innerHTML = info.desc;
+  const ex = document.getElementById('explainExample');
+  if (info.ex) {
+    ex.style.display = 'block';
+    ex.style.borderColor = info.color;
+    document.getElementById('explainExampleText').textContent = info.ex;
+  } else {
+    ex.style.display = 'none';
+  }
+  document.getElementById('explainOverlay').classList.add('show');
+}
+
+function closeExplain(e) {
+  if (e && e.target !== document.getElementById('explainOverlay')) return;
+  document.getElementById('explainOverlay').classList.remove('show');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('explainOverlay').classList.remove('show');
+});
+
+// Attach explain to tech chips
+document.querySelectorAll('.tech-chip').forEach(chip => {
+  const key = chip.textContent.trim();
+  // Try exact match or partial match
+  const match = EXPLAIN[key] || Object.keys(EXPLAIN).find(k => key.includes(k) || k.includes(key));
+  if (match) {
+    chip.classList.add('has-explain');
+    chip.addEventListener('click', () => openExplain(typeof match === 'string' ? match : key));
+  }
+});
+
+// Attach explain to 건축양식/건축공법 info-values — safe text-node approach
+document.querySelectorAll('.info-row').forEach(row => {
+  const label = row.querySelector('.info-label');
+  const val   = row.querySelector('.info-value');
+  if (!label || !val) return;
+  if (!label.textContent.includes('건축양식') && !label.textContent.includes('건축공법')) return;
+
+  const originalText = val.textContent;
+
+  // Collect matching keys, longest first (avoids partial overlap issues)
+  const matchingKeys = Object.keys(EXPLAIN)
+    .filter(k => originalText.includes(k))
+    .sort((a, b) => b.length - a.length);
+
+  if (matchingKeys.length === 0) return;
+
+  // Build one-pass replacement: scan text, replace first match found at each position
+  function buildHTML(text) {
+    let result = '';
+    let i = 0;
+    while (i < text.length) {
+      let matched = false;
+      for (const key of matchingKeys) {
+        if (text.startsWith(key, i)) {
+          const safeKey = key.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          const attrKey = key.replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+          result += `<button class="style-explain-btn" onclick="openExplain('${attrKey}')">${safeKey}<span class="tip">💡</span></button>`;
+          i += key.length;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) {
+        // Escape HTML entities for plain text
+        const ch = text[i];
+        result += ch === '&' ? '&amp;' : ch === '<' ? '&lt;' : ch === '>' ? '&gt;' : ch;
+        i++;
+      }
+    }
+    return result;
+  }
+
+  val.innerHTML = buildHTML(originalText);
+});
+</script>
+</body>
+</html>
